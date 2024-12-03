@@ -16,6 +16,36 @@ class LinkedList:
             while(current.next != None):
                 current = current.next
             current.next = new_node
+    
+    def insert(self, data, index):
+        new_Node = LinkedListNode()
+        new_Node.data = data
+        if(index == 0):
+            if(self.head == None):
+                self.head = new_Node
+            else:
+                new_Node.next = self.head
+                self.head = new_Node
+        else:
+            if(self.head == None):
+                print("Error!!! Index out of bounds")
+            else:
+                current = self.head
+                count = 0
+                while(current != None and count+1 < index):
+                    current = current.next
+                    count += 1
+                if(count + 1 == index):
+                    if(current.next == None):
+                        current.next = new_Node
+                    else:
+                        new_Node.next = current.next
+                        current.next = new_Node
+                else:
+                    print("Error!!! Index out of bounds")
+
+
+
 
     def __str__(self):
         temp_str = "["
