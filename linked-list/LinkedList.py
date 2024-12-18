@@ -35,17 +35,66 @@ class LinkedList:
                 while(current != None and count+1 < index):
                     current = current.next
                     count += 1
-                if(count + 1 == index):
-                    if(current.next == None):
-                        current.next = new_Node
-                    else:
-                        new_Node.next = current.next
-                        current.next = new_Node
-                else:
+                if(current == None):
                     print("Error!!! Index out of bounds")
+                else:
+                    new_Node.next = current.next
+                    current.next = new_Node
+                
+
+    def remove(self, index):
+        if(self.head == None):
+            print("Error!!! Index out of bounds")
+        elif(index == 0):
+            temp = self.head
+            self.head = temp.next
+            temp.next = None
+        else:
+            current = self.head
+            count = 0
+            while(current.next!=None and count+1 < index):
+                current = current.next
+                count += 1            
+            if(current.next == None):
+                print("Error!!! Index out of bounds")
+            else:
+                temp = current.next
+                current.next = temp.next
+                temp.next = None
 
 
+            
+    def set(self, data, index):
+        if(self.head == None):
+            print("Error!!! Index out of bounds")
+        else:
+            current = self.head
+            count = 0
 
+            while(current != None and count < index):
+                current  = current.next
+                count += 1
+            
+            if(current == None):
+                print("Error!!! Index out of bounds")
+            else:
+                current.data = data
+
+    def get(self, index):
+        if(self.head == None):
+            print("Error!!! Index out of bounds")
+        else:
+            current = self.head
+            count = 0
+
+            while(current != None and count < index):
+                current  = current.next
+                count += 1
+            
+            if(current == None):
+                print("Error!!! Index out of bounds")
+            else:
+                return current.data
 
     def __str__(self):
         temp_str = "["
